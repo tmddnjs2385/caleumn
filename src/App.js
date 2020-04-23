@@ -1,25 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import styled from 'styled-components'
+import SignupDialog from './Component/SignupDialog';
+
+
+const DivLeft=styled.div`
+
+
+background: #05367b;
+width: 50%;
+height: 1000px;
+float: left;
+align-items:center;
+justify-content:center;
+display:flex;
+flex-direction: column;
+
+&:hover{
+  opacity: 0.8;
+}
+
+div{
+  color: white;
+  font-size: 25px;
+}
+`;
+
+const DivRight=styled.div`
+
+background: #910023;
+
+width: 50%;
+height: 1000px;
+
+float: right;
+
+align-items:center;
+justify-content:center;
+display:flex;
+flex-direction: column;
+
+&:hover{
+  opacity: 0.8;
+}
+div{
+  color: white;
+  font-size: 25px;
+}
+
+`;
+
+
+
 
 function App() {
+
+
+  const [visible, setVisible]=useState(false);
+
+  const onClick=()=>{
+     setVisible(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <DivLeft onClick={onClick}>
+      <img src='./yonsei.png' alt="Yonsei"></img>
+      <div>연세대 포털 계정</div>
+    </DivLeft>
+  
+    <DivRight onClick={onClick}>
+      <img src='./korea.png' alt="Korea"></img>
+      <div>고려대 포털 계정</div>
+    </DivRight>
+
+      <SignupDialog Visible={visible}/>
+    </>
   );
 }
 
